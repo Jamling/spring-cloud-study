@@ -1,0 +1,7 @@
+eureka:
+  instance:
+    prefer-ip-address: true # use ip address to instead hostname
+    hostname: ${spring.cloud.client.ipaddress}
+  server:
+    enable-self-preservation: false # close self preservation to drop shutdown micro-service from registry
+    eviction-interval-timer-in-ms: 30000
