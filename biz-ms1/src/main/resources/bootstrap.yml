@@ -1,0 +1,15 @@
+logging:
+  level:
+    com.netflix.discovery: DEBUG
+eureka:
+  client:
+    region: huadong
+    availability-zones:
+      huadong: nanjing, shanghai
+    service-url:
+      shanghai: http://192.168.135.48:8761/eureka/
+      nanjing: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true # access via ip
+    hostname: ${spring.cloud.client.ipaddress}
+    instance-id: ${spring.cloud.client.ipaddress}:${server.port} # display ip:port on eureka server page
