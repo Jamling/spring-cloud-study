@@ -1,6 +1,11 @@
 eureka:
+  client:
+    service-url:
+      defaultZone: http://another.eureka.server.host:port/eureka/
+    register-with-eureka: true
   instance:
-    prefer-ip-address: true # use ip address to instead hostname
+    #ip-address: host ip address # if set `prefer-ip-address`, the assigned ip will replace the defaut ip
+    prefer-ip-address: true # use ip address (get from network automatically) register to server
     hostname: ${spring.cloud.client.ipaddress}
   server:
     enable-self-preservation: false # close self preservation to drop shutdown micro-service from registry
