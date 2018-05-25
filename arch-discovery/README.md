@@ -4,7 +4,7 @@
 
 New Spring Starter Project arch-discovery
 
-！[New project wizard](./new_eureka.png)
+![New project wizard](./new_eureka.png)
 
 Project Dependencies 选择Web->Web, Cloud -> Eureka Discovery 和Eureka Server
 
