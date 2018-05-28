@@ -53,6 +53,28 @@ public class ArchDiscoveryApplication {
 
 打开浏览器，输入http://localhost:8761 验证是否运行/配置成功，如果成功打开网页，说明服务发现服务端OK了
 
+## Eureka控制台
+
+输入http://localhost:8761访问Eureka控制台，可以查看Eureka Server相关的信息，包含System Status, DS Replicas, Instances, General Info等信息，其中有两项比较重要。
+
+### Instances currently registered with Eureka
+
+| Application   |     AMIs     |   Availability Zones |       Status                |
+| ------------- | ------------ | -------------------  | --------------------------- |
+| BIZ-MS1       | n/a (1)      | (1)                  |UP (1) - 192.168.133.15:8080 |
+
+这个表格列出了所有注册到Eureka Server的Eureka Client列表，`Status`列中的 `UP`表示正常，如果为红色的`DWON`表示微服务已下线，Eureka Client中的`eureka.instance`配置会影响到`Status`列的显示，比如biz-ms1在bootstrap.yml中配置了`eureka.instance.instance-id: ${spring.cloud.client.ipaddress}:${server.port}`，则Appication的`Status`列显示的是ip:port格式（默认是主机名称+端口号）
+
+### General Info
+
+| Name                 |     Value                      |
+| -------------------- | -----------------------------  |
+| registered-replicas  | http://localhost:8761/eureka/  |
+| unavailable-replicas | http://localhost:8761/eureka/, |
+| available-replicas   |                                |
+
+这个表格主要是Eureka Server的基本信息，其中`registered-replicas`，`unavailable-replicas`, `available-replicas`表示的Eureka Server也作为Client端向其中Eureka Server注册的信息（实现高可用的Eureka集群），如果注册的地址将在`available-replicas`中，表示集群工作正常。
+
 ## 测试
 
 Spring Boot Starter工程会自动生成一个`xxApplication.java`和`xxApplicationTests.java`后续将尽量不使用浏览器测试验证，而以测试用例的方式来验证。
@@ -106,7 +128,7 @@ client
 客户端相关
 
 - service-url: 配置eureka 服务端的地址，使用zone: url的方式配置
- url可以使用英文`,`分隔，如http://ip1:port1/eureka/,http://ip2:port2/eureka/，但是注意了，英文`，`前后不能带空格，`/eureka/`是固定的，不能少
+ url可以使用英文`,`分隔，如http://ip1:port1/eureka/,http://ip2:port2/eureka/ 但是注意了，英文`，`前后不能带空格，`/eureka/`是固定的，不能少
  spring boot 2.0，几乎所有的配置项名称都变成小写了，使用-连接单词，但是这个defaultZone，一定要是defaultZone，除非你更改availability-zones的配置（biz-ms1中有示例）
 - register-with-eureka：默认为true，表示会连接eureka服务端注册，和上面的service-url联合使用
 
