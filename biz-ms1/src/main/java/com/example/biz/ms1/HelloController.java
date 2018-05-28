@@ -34,4 +34,9 @@ public class HelloController {
         result.put("msg", "hello " + name);
         return result;
     }
+    
+//    @RequestMapping("port")
+//    public int port() {
+//        return port();
+//    }
 }

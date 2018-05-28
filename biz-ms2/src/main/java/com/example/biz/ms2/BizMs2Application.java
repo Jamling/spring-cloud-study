@@ -1,0 +1,25 @@
+package com.example.biz.ms2;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+@EnableDiscoveryClient
+@SpringBootApplication
+@RibbonClient(name = "biz-ms2", configuration = RibbonConfiguration.class)
+public class BizMs2Application {
+
+    @Bean
+    @LoadBalanced
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(BizMs2Application.class, args);
+    }
+}

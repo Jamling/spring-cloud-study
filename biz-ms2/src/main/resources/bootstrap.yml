@@ -1,0 +1,3 @@
+#biz-ms2:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
