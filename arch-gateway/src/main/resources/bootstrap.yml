@@ -1,0 +1,33 @@
+eureka:
+  instance:
+    status-page-url-path: /swagger-ui.html #Eureka Application Status的链接，设置为Swagger2的API文档页
+    prefer-ip-address: true # 使用IP地址
+    hostname: ${spring.cloud.client.ipaddress}
+    instance-id: ${spring.cloud.client.ipaddress}:${server.port}
+# 设置熔断器的超时时间，60秒    
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+# ribbon全局设置
+ribbon:
+  eager-load:
+    enabled: true
+#    clients: xxx, yyy
+  SocketTimeout: 5000 #微服务路由连接超时，默认的1秒太容易超时了
+  ReadTimeout: 60000 #微服务路由读取超时，原来默认为?
+zuul:
+  host: #转发（配置了url的路由）超时
+    connect-timeout-millis: 10000 
+    socket-timeout-millis: 60000
+  routes: # 如果是微服务，可以不用显式配置
+    ms1:
+      path: /ms1/**
+      url: http://localhost:8080/
+    ms2:
+      path: /ms2/**
+      service-id: biz-ms1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude:
+        - env
