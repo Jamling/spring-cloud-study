@@ -1,0 +1,26 @@
+#spring:
+#  security:
+#    user: # 通过配置文件来配置用户，适用于简单的系统，比如eureka server
+#      name: user
+#      #password: "{noop}123456"
+#      #password: "{bcrypt}$2a$10$Su.zsYowieJiq53blfvEHOISr0tNTNDhG.XYNBntCqnnPDC9XaxNq"
+#      password: "{MD5}{}72874eda8497eb222716b6438cae66ac"
+#      roles:
+#      - USER
+#      - ADMIN
+
+#security:
+#  oauth2:
+#    client: # 作为认证服务器，受信任的客户端
+#      client-id: client
+#      client-secret: 123456
+#      scope: read,write
+#      auto-approve-scopes: '.*' 
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude:
+        - env

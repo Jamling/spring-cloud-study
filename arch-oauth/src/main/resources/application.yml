@@ -1,0 +1,19 @@
+server:
+  port: 1111
+  
+spring:
+  application:
+    name: oauth
+  profiles:
+    active: # 当前profile为test, TestSeucrityConfiguration有效
+    - test
+
+logging:
+  level:
+    org.springframework.security: DEBUG #初学者建议打开debug日志
+
+--- 
+spring:
+  profiles: prd # 这里只是示例怎么使用多环境(profile)配置，在当前配置下MySeucrityConfiguration有效
+
+feign.hystrix.enabled: true #使用这个配置开启Feign fallback
