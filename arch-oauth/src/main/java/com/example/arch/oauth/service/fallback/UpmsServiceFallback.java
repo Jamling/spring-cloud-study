@@ -23,7 +23,7 @@ public class UpmsServiceFallback implements UpmsService {
         // 123456加密后的密码
         // info.password = "5f1d7a84db00d2fce00b31a7fc73224f";
         info.password = password;
-        return info;
-        // return null;
+        // return info;
+        return null;
     }
 }

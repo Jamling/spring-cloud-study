@@ -61,7 +61,7 @@ spring:
 - `/client`: 登录用户可访问
 - `/client`: 登录用户并且admin角色可访问
 - `/me`: 登录用户可访问，并且纳入资源服务器保护的资源列表
-- `user`: 输出结果同`/me`，不过未纳入资源服务器保护的资源列表
+- `/user`: 输出结果同`/me`，不过未纳入资源服务器保护的资源列表
 
 新建`SecurityConfiguration`抽象类并继承 `WebSecurityConfigurerAdapter`，类注解中添加`@EnableWebSecurity`开启Spring Security。
 
@@ -645,6 +645,13 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 ```
 
 ### 参考
+
+- [Securing a Web Application]
+- [Spring Security Architecture]
+- [Spring Security Reference]
+- [OAuth 2 Developers Guide]
+- [Spring Boot and OAuth2]
+- [OAuth2理解 － 阮一峰]
 
 [OAuth2理解 － 阮一峰]: http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html
 [Securing a Web Application]: https://spring.io/guides/gs/securing-web/
