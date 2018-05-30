@@ -1,0 +1,22 @@
+server:
+  port: 8888 #建议默认端口号，这样config client可以不用配置cloud config
+  
+spring:
+  cloud:
+    config:
+      server: # 服务端配置
+        git:
+          uri: file://${user.home}/config-repo # 测试环境使用本地地址，免commit直接生效
+
+---
+spring:
+  profiles: github # 此环境使用教程中的github仓库做为配置中心
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Jamling/spring-cloud-study
+          search-paths:
+          - arch-config-repo
+            
+    

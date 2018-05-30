@@ -1,0 +1,6 @@
+name: client
+server:
+  application:
+    foo: server application foo bar
+  bootstrap:
+    foo: ${global.foo}

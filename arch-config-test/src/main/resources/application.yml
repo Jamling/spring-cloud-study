@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: client
+  cloud:
+    config:
+      uri: http://localhost:8888
+#      discovery: #使用服务发现，如不想写死上面的uri，开启此方式
+#        enabled: true
+#        service-id: config-server 
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude:
+        - env
+      
+client:
+  application:
+    foo: ${server.application.foo:} # 使用服务端的server.application.foo，如果找不到，默认为空
