@@ -42,7 +42,8 @@ eureka:
     }
 ```
 
-注：更多介绍请参考bootstrap.yml配置的负载均衡配置及RibbonClient配置。
+注：更多介绍请参考http://cloud.spring.io/spring-cloud-static/Edgware.SR3/single/spring-cloud.html#_customizing_the_ribbon_client (部分示例在`bootstrap.yml`和`RibbonConfiguration.java`中有体现)
+
 
 New ConsumerController，添加index方法，路由为`/`，直接使用RestTemplate去请求biz-ms1的index方法（路由为`/`）
 
